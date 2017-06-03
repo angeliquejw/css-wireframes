@@ -1,223 +1,30 @@
 /**
- * Margins
- *
- * Add margins to any block
- *
- * @example
- *		<div class="wf-block wf-margin--all"></div>
- *		<div class="wf-block wf-margin--left"></div>
- *		<div class="wf-block wf-margin--left-large wf-margin--right"></div>
- *
- * @note
- * We specifically add .wf-block to ensure .wf-margin has priority
- */
-.wf-margin,
-[class].wf-margin // for priority
-{
-	&--all {
-		margin: $gutter-horizontal $gutter-vertical;
-		&--large {
-			margin: $gutter-horizontal * 2 $gutter-vertical * 2;
-		}
-	}
-	&--left {
-		margin-left: $gutter-horizontal;
-		&--large {
-			margin-left: $gutter-horizontal * 2;
-		}
-	}
-	&--top {
-		margin-top: $gutter-vertical;
-		&--large {
-			margin-top: $gutter-vertical * 2;
-		}
-	}
-	&--right {
-		margin-right: $gutter-horizontal;
-		&--large {
-			margin-right: $gutter-horizontal * 2;
-		}
-	}
-	&--bottom {
-		margin-bottom: $gutter-vertical;
-		&--large {
-			margin-bottom: $gutter-vertical * 2;
-		}
-	}
-}
-
-/**
- * Paddings
- *
- * Add paddings to any block
- *
- * @example
- *		<div class="wf-block wf-padding--all"></div>
- *		<div class="wf-block wf-padding--left"></div>
- *		<div class="wf-block wf-padding--left-large wf-padding--right"></div>
- *
- * @note
- * We specifically add .wf-block to ensure .wf-padding has priority
- */
-.wf-padding,
-[class].wf-padding  // for priority
-{
-	&--all {
-		padding: $gutter-horizontal $gutter-vertical;
-		&--large {
-			padding: $gutter-horizontal * 2 $gutter-vertical * 2;
-		}
-	}
-	&--left {
-		padding-left: $gutter-horizontal;
-		&--large {
-			padding-left: $gutter-horizontal * 2;
-		}
-	}
-	&--top {
-		padding-top: $gutter-vertical;
-		&--large {
-			padding-top: $gutter-vertical * 2;
-		}
-	}
-	&--right {
-		padding-right: $gutter-horizontal;
-		&--large {
-			padding-right: $gutter-horizontal * 2;
-		}
-	}
-	&--bottom {
-		padding-bottom: $gutter-vertical;
-		&--large {
-			padding-bottom: $gutter-vertical * 2;
-		}
-	}
-}
-
-/**
- * Hide en element
+ * Hide an element
  *
  * Does not use display: none; so you can have animations
  */
-.wf-hidden,
-[class].wf-hidden  // for priority
-{
+
+[data-wf="hidden"] {
 	opacity: 0;
 	overflow: hidden;
 	width: 0;
 	max-width: 0;
 	height: 0;
-	max-height: 0;
-	//flex-basis: 0%;
+	max-height: 0; //flex-basis: 0%;
 	padding: 0;
 	margin: 0;
 	line-height: 0;
 }
 
-/**
- * Force an aspect ratio for a block level element
- *
- * If any, the content **must** be in a .wf-wrapper
- *
- * @example
- * 		<div class="wf-block wf-ratio--16-9">
- * 			<div class="wf-wrapper">some content</div>
- * 		</div>
- */
-[class*=wf-ratio],
-[class][class*=wf-ratio] // for priority
-{
-	@include aspect-ratio-common;
-}
-.wf-ratio,
-[class].wf-ratio // for priority
-{
-	/* square */
-	&--1-1 {
-		@include aspect-ratio-variant(1, 1);
-	}
-	/* landscape */
-	&--4-1 {
-		@include aspect-ratio-variant(4, 1);
-	}
-	&--3-1 {
-		@include aspect-ratio-variant(3, 1);
-	}
-	&--2-1 {
-		@include aspect-ratio-variant(2, 1);
-	}
-	&--16-9 {
-		@include aspect-ratio-variant(16, 9);
-	}
-	&--4-3 {
-		@include aspect-ratio-variant(4, 3);
-	}
-	&--3-2 {
-		@include aspect-ratio-variant(3, 2);
-	}
-	/* portrait */
-	&--1-4 {
-		@include aspect-ratio-variant(1, 4);
-	}
-	&--1-3 {
-		@include aspect-ratio-variant(1, 3);
-	}
-	&--1-2 {
-		@include aspect-ratio-variant(1, 2);
-	}
-	&--9-16 {
-		@include aspect-ratio-variant(9, 16);
-	}
-	&--3-4 {
-		@include aspect-ratio-variant(3, 4);
-	}
-	&--2-3 {
-		@include aspect-ratio-variant(2, 3);
-	}
-}
-
-/**
- * Sets the width of a block level element in %
- *
- * @example
- * 		<div class="wf-media wf-width-p--10"></div>
- */
-.wf-width,
-[class].wf-width // for priority
-{
-	/* 5 to 100, in 5 increments */
-	@for $i from 1 through 20 {
-		$width: $i*5;
-		&--#{$width}p {
-			width: $width + %;
-		}
-	}
-}
-
-/**
- * Sets the width of a block level element in rem
- *
- * @example
- * 		<div class="wf-media wf-width--10"></div>
- */
-.wf-width,
-[class].wf-width // for priority
-{
-	/* 5 to 30, in 5 increments */
-	@for $i from 1 through 6 {
-		$width: $i*5;
-		&--#{$width}r {
-			width: $width + rem;
-		}
-	}
-}
 
 /**
  * Make a block level item's position relative
  */
-.wf-relative {
+
+[data-wf="relative"] {
 	position: relative;
 }
+
 
 /**
  * Horizontal separator
@@ -225,9 +32,10 @@
  * [FIXME] should this be in its own module ?
  *
  * @example
- *		<hr class="wf-separator">
+ *		<hr data-wf="separator">
  */
-.wf-separator {
+
+[data-wf="separator"] {
 	border: 1px dotted $color-default;
 	border-width: 1px 0 0;
 	margin: $gutter-vertical*2 0;

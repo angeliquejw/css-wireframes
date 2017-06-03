@@ -1,58 +1,45 @@
-
 /* Not readable texts, just for the grey */
-.wf-text {
+
+[data-wf-text="lines"] {
 	/**
 	 * Generate block lines
 	 *
 	 * Must be apply only on inline elements
 	 * @example
-	 * 		<p><span class="wf-text-lines">Some text</span></p>
+	 * 		<p><span data-wf-text="lines">Some text</span></p>
 	 **/
-	&-lines {
-		background-color: $color-text;
-		color: transparent;
-		font-size: 0.5em; // Adjusted to match the main font
-		line-height: 2.5; // Adjusted to match the main font
-		letter-spacing: 0.33em; // compensate the font-size to keep the text length
-
-		a {
-			color: inherit;
-			background-color: saturate(darken($color-link, 5%), 20%);
-			&:hover {
-				background-color: $color-link-hover;
-			}
-			&:focus {
-				background-color: $color-important !important; // grrrr tinytypo !
-				color: $color-important !important; // grrrr tinytypo !
-			}
+	background-color: $color-text;
+	color: transparent;
+	font-size: 0.5em; // Adjusted to match the main font
+	letter-spacing: 0.33em; // compensate the font-size to keep the text 	line-height: 2.5; // Adjusted to match the main font
+	length a {
+		background-color: saturate(darken($color-link, 5%), 20%);
+		color: inherit;
+		&:hover {
+			background-color: $color-link-hover;
 		}
-
-		&.wf-text--important {
+		&:focus {
+			color: $color-important;
 			background-color: $color-important;
 		}
 	}
+}
 
+[data-wf-text="words"] {
 	/**
 	 * Generate block words
 	 *
 	 * Load a font to transform all characters in a filled block
 	 * @example
-	 * 		<div class="wf-text-words"><p>Some text</p><p>Other thing</p></div>
+	 * 		<div data-wf-text="words"><p>Some text</p><p>Other thing</p></div>
 	 **/
-	&-words {
-		font-family: 'blokkneue', cursive;
-		line-height: 0.95; // Adjusted to match the main font
-
-		a {
-			text-decoration: none;
-			&:focus {
-				background-color: transparent !important; // grrrr tinytypo !
-				color: $color-important !important; // grrrr tinytypo !
-			}
-		}
-
-		&.wf-text--important {
-			color: $color-important;
+	font-family: 'blokkneue', cursive;
+	line-height: 0.95; // Adjusted to match the main font
+	a {
+		text-decoration: none;
+		&:focus {
+			background-color: transparent !important; // grrrr tinytypo !
+			color: $color-important !important; // grrrr tinytypo !
 		}
 	}
 }

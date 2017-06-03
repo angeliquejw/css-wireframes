@@ -1,15 +1,27 @@
-
 body,
-[class^=wf-] {
+[data-wf] {
 	color: $color-text;
 	font-family: $font-family-base;
 	font-size: $font-size-base;
 }
 
-a, a:visited {
+a,
+a:visited {
 	color: $color-link;
 	text-decoration: underline;
 	&:hover {
 		color: $color-link-hover;
+	}
+}
+
+.is-hidden-for-small {
+	@include media('<lg') {
+		display: none;
+	}
+}
+
+.is-hidden-for-large {
+	@include media('>=lg') {
+		display: none;
 	}
 }

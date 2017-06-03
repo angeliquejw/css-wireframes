@@ -9,72 +9,50 @@
  * @example
  *		<img src="images/ratio-16-9.png" width=100 class="wf-media wf-media--video wf-media--dark">
  */
-.wf-media {
 
-	// By default, it is square and 100px wide
-	@include aspect-ratio-common;
-	@include aspect-ratio-variant(1, 1);
-	width: 10rem; // 158px
-	display: inline-block;
-	&[class*=ratio] {
-		display: inline-block; // force display type
-	}
-	vertical-align: baseline;
-	border: 1px solid $color-default;
+[data-wf-media] {
+	// By default, it is square and 158px wide
 	background-image: url('../../src/images/media-image-dark.svg');
-	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: 60%;
-
-	/**
-	 * Video media variant
-	 */
-	&--video {
-		background-image: url('../../src/images/media-video-dark.svg');
+	background-repeat: no-repeat;
+	border: 1px solid $color-default;
+	display: inline-block;
+	vertical-align: baseline;
+	width: 10rem; // 158px
+	&:before {
+		display: block;
+		content: "";
+		width: 100%;
+		padding-top: 100%;
 	}
-
 	/**
-	 * Audio media variant
-	 */
-	&--audio {
-		background-image: url('../../src/images/media-audio-dark.svg');
-	}
-
-	/**
-	 * Dark media variant
-	 */
-	&--dark {
-		background-color: $color-default;
-		background-image: url('../../src/images/media-image-light.svg');
-		&.wf-media--video {
-			background-image: url('../../src/images/media-video-light.svg');
-		}
-		&.wf-media--audio {
-			background-image: url('../../src/images/media-audio-light.svg');
-		}
-	}
-
-	/**
-	 * Crossed media variant
-	 */
-	&--crossed {
-		@include background-crossed;
-		&.wf-media--dark {
-			@include background-crossed(white);
-		}
-	}
-
-	/**
-	 * Round media variant
-	 */
-	&--rounded {
-		border-radius: 9999em;
-	}
-
-	/**
-	 * Inside a figure
-	 */
+	* Inside a figure
+	*/
 	figure & {
 		margin-bottom: $gutter-vertical/2;
 	}
+}
+
+
+/**
+* Video media variant
+*/
+
+[data-wf-media^="video"] {
+	background-image: url('../../src/images/media-video-dark.svg');
+}
+
+
+/**
+* Dark media variant
+*/
+
+[data-wf-media^="dark"] {
+	background-color: $color-dark;
+	background-image: url('../../src/images/media-image-light.svg');
+}
+
+[data-wf-media^="dark video"] {
+	background-image: url('../../src/images/media-video-light.svg');
 }

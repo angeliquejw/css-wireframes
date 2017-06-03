@@ -1,182 +1,92 @@
-
 /**
  * Manage wireframe blocks
  * @example
- * 		<div class="wf-block wf-block--important wf-block--filled wf-block--color-red">
+ * 		<div data-wf-block="important filled">
  **/
-.wf-block {
+
+[data-wf-block] {
 	@include wf-border;
 	padding: $gutter-vertical $gutter-horizontal;
 	margin-bottom: $gutter-vertical;
 	position: relative;
 	display: flex;
 	flex-flow: column nowrap;
+}
 
-	/**
-	 * Block content wrapper
-	 *
-	 * This is only needed if there is an aspect ratio applied
-	 */
-	> .wf-wrapper {
-		display: flex;
-		flex-flow: column nowrap;
-		height: 100%;
-	}
 
-	/**
-	 * Block label
-	 */
-	&__label {
-		margin: auto auto; // centered horizontally and vertically
-		padding: $gutter-vertical/2 $gutter-horizontal/2;
-		background-color: white;
-		[class*=wf-block--color] & {
-			background-color: inherit;
-		}
-		font-weight: 600;
-		text-align: center;
-	}
+/**
+* Block label
+*/
 
-	/**
-	 * Take all the place
-	 */
-	&--fill {
-		width: 100%;
-		height: 100%;
-	}
+[data-wf-label] {
+	margin: auto auto; // centered horizontally and vertically
+	padding: $gutter-vertical/2 $gutter-horizontal/2;
+	background-color: white;
+	font-weight: 600;
+	text-align: center;
+}
 
-	/**
-	 * Put diagonals inside the block
-	 */
-	&--crossed {
-		@include background-crossed;
-	}
 
-	/**
-	 * Make borders more visible
-	 */
-	&--important {
-		border: 1px solid $color-important;
-		box-shadow: inset 0 0 0 1px $color-important;
-	}
+/**
+* Take all the place
+*/
 
-	/**
-	 * Dark background
-	 */
-	&--color-dark {
+[data-wf-block*="fill"] {
+	width: 100%;
+	height: 100%;
+}
+
+
+/**
+* Put diagonals inside the block
+*/
+
+[data-wf-block*="crossed"] {
+	@include background-crossed;
+}
+
+
+/**
+* Make borders more visible
+*/
+
+[data-wf-block*="important"] {
+	border: 1px solid $color-important;
+	box-shadow: inset 0 0 0 1px $color-important;
+}
+
+
+/**
+* Dark background
+*/
+
+[data-wf-block*="dark"] {
+	background-color: $color-dark;
+	border-color: $color-dark;
+	[data-wf-label] {
 		background-color: $color-dark;
-		border-color: $color-dark;
-		&.wf-block--crossed {
-			@include background-crossed(darken($color-dark, 30%));
-		}
-		.wf-block__label {
-			color: lighten($color-dark, 50%);
-			background-color: $color-dark;
-		}
+		color: lighten($color-dark, 50%);
 	}
+}
 
-	/**
-	 * Light background
-	 */
-	&--color-light {
+[data-wf-block~="dark"][data-wf-block~="crossed"] {
+	@include background-crossed(darken($color-dark, 30%));
+}
+
+
+/**
+* Light background
+*/
+
+[data-wf-block*="light"] {
+	background-color: $color-light;
+	border-color: $color-light;
+	[data-wf-label] {
 		background-color: $color-light;
-		border-color: $color-light;
-		&.wf-block--crossed {
-			@include background-crossed(darken($color-light, 30%));
-		}
-		.wf-block__label {
-			color: darken($color-light, 40%);
-			background-color: $color-light;
-		}
+		color: lighten($color-light, 40%);
 	}
+}
 
-	/**
-	 * Gray background
-	 */
-	&--color-gray {
-		background-color: $color-gray;
-		border-color: $color-gray;
-		&.wf-block--crossed {
-			@include background-crossed(darken($color-gray, 30%));
-		}
-		.wf-block__label {
-			color: darken($color-gray, 40%);
-			background-color: $color-gray;
-		}
-	}
-
-	/**
-	 * Light gray background
-	 */
-	&--color-gray-light {
-		background-color: $color-gray-light;
-		border-color: $color-gray-light;
-		&.wf-block--crossed {
-			@include background-crossed(darken($color-gray-light, 30%));
-		}
-		.wf-block__label {
-			color: darken($color-gray-light, 40%);
-			background-color: $color-gray-light;
-		}
-	}
-
-	/**
-	 * Put a red background
-	 */
-	&--color-red {
-		background-color: $color-red;
-		border-color: $color-red;
-		&.wf-block--crossed {
-			@include background-crossed(darken($color-red, 30%));
-		}
-		.wf-block__label {
-			color: darken($color-red, 40%);
-			background-color: $color-red;
-		}
-	}
-
-	/**
-	 * Put a green background
-	 */
-	&--color-green {
-		background-color: $color-green;
-		border-color: $color-green;
-		&.wf-block--crossed {
-			@include background-crossed(darken($color-green, 30%));
-		}
-		.wf-block__label {
-			color: darken($color-green, 40%);
-			background-color: $color-green;
-		}
-	}
-
-	/**
-	 * Put a yellow background
-	 */
-	&--color-yellow {
-		background-color: $color-yellow;
-		border-color: $color-yellow;
-		&.wf-block--crossed {
-			@include background-crossed(darken($color-yellow, 30%));
-		}
-		.wf-block__label {
-			color: darken($color-yellow, 40%);
-			background-color: $color-yellow;
-		}
-	}
-
-	/**
-	 * Put a pink background
-	 */
-	&--color-pink {
-		background-color: $color-pink;
-		border-color: $color-pink;
-		&.wf-block--crossed {
-			@include background-crossed(darken($color-pink, 30%));
-		}
-		.wf-block__label {
-			color: darken($color-pink, 40%);
-			background-color: $color-pink;
-		}
-	}
+[data-wf-block~="light"][data-wf-block~="crossed"] {
+	@include background-crossed(darken($color-light, 30%));
 }

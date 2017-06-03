@@ -13,6 +13,8 @@
     "url": "https://github.com/LesDeveloppementsDurables/css-wireframes.git"
   },
   "devDependencies": {
+    "browser-sync": "^2.18.12",
+    "ghost-grid": "0.1.0-alpha",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-clean": "^0.3.2",

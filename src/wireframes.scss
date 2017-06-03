@@ -1,32 +1,38 @@
-
 /**
  * CSS Wireframes
  * @author Les Développements Durables
  **/
 
+
 /* Variables */
-@import "variables.scss";
+
+@import "variables";
 
 /* Externals frameworks */
-@import "frameworks/tinytypo/scss/tinytypo"; // Reset & Typographic base
+
+@import "vendor/mq"; // include-media
+@import "vendor/grid"; // A grid system
 
 /* Mixins */
-@import "mixins.scss";
+
+@import "mixins";
 
 /* Fonts */
+
 @import "fonts";
 @import "fontello";
 
 /* Base */
+
 @import "base";
 
 /* helpers */
+
 @import "helpers";
 
 /* Modules */
-@import "modules/text"; // Dummy text
+
 @import "modules/block"; // Manage wireframe blocks
-@import "modules/note"; // Manage notes
 @import "modules/media"; // Manage medias
-@import "modules/optional"; // Manage optional elements
-@import "modules/toolbar"; // Manage toolbar
+@import "modules/text"; // Dummy text
+@import "modules/tooltips"; // Manage tooltips
