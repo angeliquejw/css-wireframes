@@ -3,6 +3,7 @@ Modified version of [Les Développements Durables' css-wireframes](http://wirefr
 * Converted CSS class names to use `data-wf-*` elements to make it simpler to convert this markup for production
 * Added [include-media](http://include-media.com)
 * Added [Ghost Grid](http://reklino.github.io/ghost-grid/demo/)
+* Added [Browser Sync](https://browsersync.io/)
 * Added tooltips used in demo to main project
 * Removed tinytypo integration
 
